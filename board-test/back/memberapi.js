@@ -114,7 +114,6 @@ router.post('/login', async function (req, res, next) {
         if (memberItem.password == memberPassword) {
             let accessToken = "";
             let errorMessageAT = "";
-
             // Access-Token
             try {
                 accessToken = await new Promise((resolve, reject) => {
@@ -123,7 +122,7 @@ router.post('/login', async function (req, res, next) {
                             memberName: memberItem.name
                         },
                         secret, {
-                            expiresIn: '5s'
+                            expiresIn: '1h'
                         },
                         (err, token) => {
                             if (err) {
